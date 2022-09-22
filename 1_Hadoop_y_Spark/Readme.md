@@ -2,13 +2,27 @@
 
 ## Instrucciones rápidas   
 
-El comando `make` creará un contenedor llamaod `hadoop` el cual ejecutará automáticamente todos los pasos que aquí se describen. 
+El comando `make` creará un contenedor llamado `hadoop` el cual ejecutará automáticamente todos los pasos que aquí se describen. 
 
 ## Hadoop  
 
 Hadoop [2] es un *framework* (conjunto estadarizado de conceptos, prácticas y criterios para 
 enfocar un tipo concreto de problema particular [1]) para programar aplicaciones 
 distribuidas que requieren de un gran volumen de datos. 
+
+### HDFS  
+
+Recurso [11]
+ 
+HDFS son las siglas de *Hadoop Distributed File System*. Es un sistema distribuido basado en Java que permite obtener una visión de los recursos como una sola unidad.
+
+#### Arquitectura y componentes de HDFS 
+
+#### NameNode
+
+###  Pseudo-Distributed Operation 
+
+https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
 
 ### Instalación  
 
@@ -38,7 +52,7 @@ OpenJDK 64-Bit Server VM (build 24.261-b02, mixed mode)
 8. Vamos a transladar el fichero descomprimido al directorio `opt` (directorio usual donde se instalan aplicaciones de terceros [7]).
 `mv hadoop-2.8.1 opt/`
 9.  Control de versiones en Hadoop. Para gestionar las versiones creamos el link simbólico `hadoop`.   
-`ln -s hadoop-2.8.1/ hadoop`
+`ln -s hadoop-2.8.1 hadoop`
 
 10. Indicamos la versión de Java. 
 `vi etc/hadoop/hadoop-env.sh`
@@ -204,4 +218,7 @@ Consultadas el 9 de septiembre de 2022:
 5. [rsync Hostinger information](https://www.hostinger.es/tutoriales/rsync-linux)
 6. [ssh vs rsync stackoverflow](https://superuser.com/questions/329424/which-is-more-efficient-rsync-over-ssh-or-rsync-to-a-drive-mounted-locally-via)
 7. [directorios Ubuntu](https://help.ubuntu.com/kubuntu/desktopguide/es/directories-file-systems.html)
-8. [Instalar Hadoop medium](https://medium.com/@hema-chandra/cannot-execute-libexec-hdfs-config-sh-ec7c3b1a45bd)
+8. [Instalar Hadoop medium](https://medium.com/@hema-chandra/cannot-execute-libexec-hdfs-config-sh-ec7c3b1a45bd)  
+9. [Pseudo-distributed Operations](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html)  
+10. [Docker Expose](https://www.cloudbees.com/blog/docker-expose-port-what-it-means-and-what-it-doesnt-mean)  
+11. [HDFS de Aprender big data](https://aprenderbigdata.com/hdfs/)
