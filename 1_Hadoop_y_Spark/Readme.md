@@ -1,5 +1,10 @@
 # Hadoop y Spark 
 
+## ¿Cómo instalar la plantilla de LaTeX?  
+
+- Instalar [pandoc](https://pandoc.org/installing.html).  
+- Instalar laTEX (si es que no lo tenías instalado).
+- 
 ## Instrucciones rápidas   
 
 El comando `make` creará un contenedor llamado `hadoop` el cual ejecutará automáticamente todos los pasos que aquí se describen. 
