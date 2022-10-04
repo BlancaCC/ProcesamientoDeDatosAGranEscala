@@ -1,7 +1,7 @@
 ---
 title: "Práctica 1. Hadoop y Spark"
 author: [Blanca Cano Camarero y Iker Villegas Labairu]
-date: "8-10-22"
+date: "Madrid 8 de octubre del 2022"
 subject: "Procesamiento de datos a gran escala"
 keywords: [Hadoop, Spark]
 subtitle: ""
@@ -61,12 +61,17 @@ material/
 |-- quijote.txt
 ```
 
-###  Preguntas expuestas en las diapositivas 
+### Preguntas expuestas en las diapositivas  
 
-Las diapositivas con la guía de instalación) estaba salpicada de preguntas, vamos a proceder a reponderlas: 
+Las diapositivas con la guía de instalación) estaba salpicada de preguntas, vamos a proceder a reponderlas:  
 
+#### preguntas sobre la instalación de Hadoop Pseudo distribuida  
 
+1. **¿En qué directorios del HDFS se copian los ficheros** (Diapositiva 41)  
+Se copian en el directorio `/user/bigdata`.
 
+2. **¿Qué ocurre si no hunieramos creado el directorio?** (Diapositiva 41)
+Obtendríamos un error del estilo `No such file or directory`.
 
 ## Ejecicio 1.1  
 
