@@ -226,7 +226,7 @@ sudo yum install java-1.7.0-openjdk-devel.x86_64
 ```
 Empezaremos para el caso en el que no vamos a usar HDFS. 
 A partir de ahora necesitaremos ser super usuario, así que aplicamos el comando su. Crearemos un nuevo directorio desde la carpeta opt al que llamaremos work, y dentro del mismo, otro que denominaremos WordCount. Además, descargaremos y guardaremos los ficheros `quijote.txt` y `WordCount.java` en la ruta `/opt/work`. 
-A continuación, compilaremos el archivo de java del siguiente modo
+A continuación, compilaremos el archivo de java del siguiente modo:
 ```
 Javac -classpath /opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/mapreduce/* -d WordCount WordCount.java
 ```
