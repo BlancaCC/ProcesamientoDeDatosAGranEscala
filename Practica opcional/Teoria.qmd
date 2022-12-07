@@ -45,3 +45,5 @@ Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon) para envi
 # Fuentes 
 - Página 26 del libro TODO
 - https://es.wikipedia.org/wiki/Teorema_de_no_clonación
+
+-  https://qiskit.org/textbook/ch-algorithms/teleportation.html#3.1-How-Will-We-Test-the-Protocol-on-a-Quantum-Computer?-
