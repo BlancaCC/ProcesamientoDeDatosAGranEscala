@@ -1,0 +1,47 @@
+# Quantum teleportation 
+
+La teletransportación cuántica es una técnica para moverse por los estados cuanticos aunque no exista un canal de enlace entre el estado cuántico y su receptor. 
+
+Por ejemplo, Alice quiere enviar información cuántica para Bob. Supongamso que se trata del 
+estado qubit 
+
+$$
+| \phi \rangle
+= 
+\alpha
+| 0 \rangle
++
+\beta
+|1\rangle.
+$$
+Transmitirle la información consistiría en enviarle información a Bob sobre $\alpha$ y $\beta$. 
+
+Sin embargo el **Teorema de no clonación** 
+establece que 
+
+*No existe oprador unitario U actuando sobre $\mathcal{H}_A \otimes \mathcal{H}_B$ de 
+forma que para todos los estados normalizados 
+$| \phi \rangle_A$ y 
+$| e \rangle_B$ en 
+$\mathcal H$ complan que*
+
+
+$$
+U 
+| \phi \rangle_A
+| e \rangle_B
+= 
+| \phi \rangle_A
+| \phi \rangle_B
+$$
+
+Es decir, no podemos hacer una copia exacta de un estado cuántico desconocido, solo podremos copiar los estados clásico (no las superposiciones). 
+
+## Protocolo de Teletransportación Cuántica 
+
+Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon) para enviar un par de qubit entrelazados. 
+
+
+# Fuentes 
+- Página 26 del libro TODO
+- https://es.wikipedia.org/wiki/Teorema_de_no_clonación
