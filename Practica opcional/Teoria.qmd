@@ -1,8 +1,8 @@
 # Quantum teleportation 
 
-La teletransportación cuántica es una técnica para moverse por los estados cuanticos aunque no exista un canal de enlace entre el estado cuántico y su receptor. 
+La teleportación cuántica es una técnica para moverse por los estados cuánticos aunque no exista un canal de enlace entre el estado cuántico y su receptor. 
 
-Por ejemplo, Alice quiere enviar información cuántica para Bob. Supongamso que se trata del 
+Por ejemplo, Alice quiere enviar información cuántica para Bob. Supongamos que se trata del 
 estado qubit 
 
 $$
@@ -19,7 +19,7 @@ Transmitirle la información consistiría en enviarle información a Bob sobre $
 Sin embargo el **Teorema de no clonación** 
 establece que 
 
-*No existe oprador unitario U actuando sobre $\mathcal{H}_A \otimes \mathcal{H}_B$ de 
+*No existe operador unitario U actuando sobre $\mathcal{H}_A \otimes \mathcal{H}_B$ de 
 forma que para todos los estados normalizados 
 $| \phi \rangle_A$ y 
 $| e \rangle_B$ en 
@@ -37,13 +37,361 @@ $$
 
 Es decir, no podemos hacer una copia exacta de un estado cuántico desconocido, solo podremos copiar los estados clásico (no las superposiciones). 
 
-## Protocolo de Teletransportación Cuántica 
+## Un poco de contexto 
+Añadir quiénes fueron sus creadores y si se han hecho experimentos físicos al respecto.
 
-Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon) para enviar un par de qubit entrelazados. 
+## Protocolo de Teleportación Cuántica 
+
+### Requisitos previos 
+Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon en la notación de IBM) para enviar un par de qubit entrelazados. 
+
+### Paso generales 
+
+1. Un estado de Bell es generado cuando se envía un quibit de A a B.   
+
+2. Una medida de Bell del estado cuántico y de el cubit que se va a teletransportar ($| \phi \rangle$) es realizado en A y esto permite que uno de los cuatro estado que se van a medir puedan ser codificados en dos bits clásicos de información.   
+
+3. Usando el canal tradicional los dos bits se mandan de A a B. 
+
+4. Como resultado de la medida realizada en A, el estado de Bell está en B.  Uno de esos cuatro estados es idéntico al estado de $| \phi \rangle$ y los otros tres se le parecen. 
+
+## Formulación formal   
+
+Sea $| \psi \rangle$ el quibit de Alice que ella quiere enviar a Bob. 
+
+El qubit puede escribirse como 
+
+$$
+| \psi \rangle_C 
+= 
+\alpha
+| 0 \rangle_C
++
+\beta 1 \rangle_C.
+$$
+Donde el subíndice C se usa para distinguir este estado de A a B. 
+
+El protocolo requiere ahora que Alice y Bob comparta un estado máximo entrelazado.  este será uno de estos cuatro (no importa cual)
+
+$$
+\begin{align}
+&
+| \phi ^+ \rangle_{A B}
+= 
+\frac{1}{\sqrt{2}}
+(
+    |0 \rangle_A \otimes |0 \rangle_B
+    +
+    |1 \rangle_A \otimes |1 \rangle_B
+),
+\\
+&
+| \psi ^+ \rangle_{A B}
+= 
+\frac{1}{\sqrt{2}}
+(
+    |0 \rangle_A \otimes |1 \rangle_B
+    +
+    |1 \rangle_A \otimes |0 \rangle_B
+),
+\\
+&
+| \psi ^-\rangle_{A B}
+= 
+\frac{1}{\sqrt{2}}
+(
+    |0 \rangle_A \otimes |1 \rangle_B
+    -
+    |1 \rangle_A \otimes |0 \rangle_B
+),
+\\ 
+&
+| \phi ^- \rangle_{A B}
+= 
+\frac{1}{\sqrt{2}}
+(
+    |0 \rangle_A \otimes |0 \rangle_B
+    -
+    |1 \rangle_A \otimes |1 \rangle_B
+).
+\end{align}
+$$
+
+Sin pérdida de generalidad supondremos que el estado compartido ha sido 
+$| \phi ^+ \rangle_{A B}$. 
+
+el subíndice A y B en el estado entrelazado si ese estado pertenece a la partícula de Alice o a Bod, recordemos que C era el estado que Alice pretendía teletransportar. 
+
+Alice toma una de las partículas del par, entonces Alice tiene dos, la C que es la que quieres teletransportar y la entrelazada A. Bob tiene una. 
+
+Es estado total es el siguiente 
+
+$$
+| \psi \rangle_C
+\otimes 
+| \phi^+ \rangle_{AB}
+= 
+(
+    \alpha
+    | 0 \rangle_C
+    +
+    \beta 1 \rangle_C
+)
+\otimes
+\frac{1}{\sqrt{2}}
+(
+    |0 \rangle_A \otimes |0 \rangle_B
+    +
+    |1 \rangle_A \otimes |1 \rangle_B
+).
+$$
+Alice hace una medición local en los cuatro estados en las dos partículas en su posesión. 
+
+Que procedemos a escribir para que quede claro: 
+
+$$
+\begin{align}
+% primera ecuación 
+&
+| 0 \rangle
+\otimes
+| 0 \rangle
+= 
+\frac{1}{\sqrt{2}}
+(
+| \phi^+ \rangle
++ 
+| \phi^- \rangle
+)
+\\
+% Segunda ecuación 
+&
+| 0 \rangle
+\otimes
+| 1 \rangle
+= 
+\frac{1}{\sqrt{2}}
+(
+| \psi^+ \rangle
++ 
+| \psi^- \rangle
+)
+\\
+% Tercera ecuación
+&
+| 1 \rangle
+\otimes
+| 0 \rangle
+= 
+\frac{1}{\sqrt{2}}
+(
+| \psi^+ \rangle
+- 
+| \psi^- \rangle
+)
+\\
+% Cuarta ecuación
+&
+| 1 \rangle
+\otimes
+| 1 \rangle
+= 
+\frac{1}{\sqrt{2}}
+(
+| \phi^+ \rangle
+-
+| \phi^- \rangle
+)
+\\
+\end{align}
+$$
+
+Después de expandir la expresión para 
+$$
+| \psi \rangle_C
+\otimes 
+| \phi^+ \rangle_{AB},
+$$
+se aplican las identidades a los qubits con subíndices  A y C.  
+En nuestro caso particular esto sería: 
+
+$$
+\alpha
+\frac{1}{\sqrt{2}}
+| 0 \rangle_C
+\otimes
+| 0 \rangle_A
+\otimes
+| 0 \rangle_B
+=
+\alpha 
+\frac{1}{2}
+(
+    | \phi^+ \rangle_{CA}
+    + 
+    | \phi^- \rangle_{CA}
+).
+$$
+(Para los otros términos se haría de manera similar). 
+
+Combinando estos términos, los tres estados de partícula de A, B y C juntos obtenemos la siguiente ecuación del estado de superposición: 
+
+$$
+\begin{align}
+| \psi \rangle_C
+\otimes
+| \phi^+ \rangle_{AB}
+&= 
+\frac{1}{2}
+\left(
+\\
+& 
+| \phi^+ \rangle_{CA}
+\otimes
+( 
+    \alpha | 0 \rangle_B 
+    +
+    \beta | 1 \rangle_B
+)
+\\
++ 
+&
+| \phi^- \rangle_{CA}
+\otimes
+( 
+    \alpha | 0 \rangle_B 
+    -
+    \beta | 1 \rangle_B
+)
+\\
++ 
+&
+| \psi^+ \rangle_{CA}
+\otimes
+( 
+    \alpha | 1 \rangle_B 
+    +
+    \beta | 0 \rangle_B
+)
+\\
++ 
+&
+| \psi^- \rangle_{CA}
+\otimes
+( 
+    \alpha | 1 \rangle_B 
+    -
+    \beta | 0 \rangle_B
+)
+\\
+&\right).
+\end{align}
+$$
+
+Notemos qe las partículas siguen igual ya que no hemos 
+aplicado ninguna transformación a las operaciones. 
+
+La teletrasportación ocurre cuando alice mide uno de sus qubits A y V en la base de Bell.
 
 
+$$
+| \phi^+ \rangle_{CA}, 
+| \phi^- \rangle_{CA}, 
+| \psi^+ \rangle_{CA}, 
+| \psi^- \rangle_{CA}.
+$$
+
+
+Equivalentemente la medida también puede darse en una base computacional con combinaciones
+
+$$
+\left\{
+| 0 \rangle, 
+| 1 \rangle
+\right\}
+$$
+mapeando cada estado de Bell de manera única con un elemento de 
+
+$$
+\left\{
+| 0 \rangle
+\otimes
+| 0 \rangle,
+| 0 \rangle
+\otimes
+| 1 \rangle,
+| 1 \rangle
+\otimes
+| 0 \rangle,
+| 1 \rangle
+\otimes
+| 1 \rangle
+\right\}.
+$$
+
+De esta manera los estado de Alice colapsarán con igualdad de probabilidad en uno de los siguientes estados: 
+
+$$
+| \phi^+ \rangle_{CA}
+\otimes
+(
+    \alpha | 0 \rangle_B
+    +
+    \beta | 1 \rangle_B
+),
+$$
+
+$$
+| \phi^- \rangle_{CA}
+\otimes
+(
+    \alpha | 0 \rangle_B
+    -
+    \beta | 1 \rangle_B
+),
+$$
+
+$$
+| \psi^+ \rangle_{CA}
+\otimes
+(
+    \alpha | 1 \rangle_B
+    +
+    \beta | 0 \rangle_B
+),
+$$
+
+$$
+| \psi^- \rangle_{CA}
+\otimes
+(
+    \alpha | 1 \rangle_B
+    -
+    \beta | 0 \rangle_B
+).
+$$
+
+
+El entrelazamiento de las partículas de Alice y Bob se ha roto. 
+
+Bob toma ahora uno de los cuatro estados posibles
+que se le parece al estado que va a ser teletrasportado. 
+
+Como resultado de la medición de Alice, ella puede enviar el resultado de la medición a Bob por el canal de transmisión tradicional. 
+
+Y habiendo recibido tal información Bob realizará las siguiente operaciones a su partícula para transformarla en el estado deseado. 
+
+- Si Alice indica que su resultado es $\phi^+ \rangle_{CA}$
+entonces Bob sabe que su cubit está en el estado deseado. 
+
+- Si el mensaje indica que 
+$\phi^- \rangle_{CA}$
+entonces deberá de transformarlo por la puerta cuántica. 
+
+TODO FALTA INDICAR LA MATRIZ DE LAS ÚLTIMAS TRES PUERTAS CUÁNTICAS. ESTO ESTÁ EN LA WIKIPEDIA. NO ME HA DADO TIEMPO, LO SIENTO. 
 # Fuentes 
-- Página 26 del libro TODO
+- Página 26 del libro TODO IKER AÑADE EL LIBRO QUE NO SÉ CUÁL ES
 - https://es.wikipedia.org/wiki/Teorema_de_no_clonación
 
 -  https://qiskit.org/textbook/ch-algorithms/teleportation.html#3.1-How-Will-We-Test-the-Protocol-on-a-Quantum-Computer?-
+- https://en.wikipedia.org/wiki/Quantum_teleportation
