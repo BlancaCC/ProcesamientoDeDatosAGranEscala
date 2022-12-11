@@ -1,5 +1,9 @@
 # Quantum teleportation 
 
+Autores: Blanca Cano Camarero, Iker Villegas Labairu.
+
+## Introducción
+
 La teleportación cuántica es una técnica para moverse por los estados cuánticos aunque no exista un canal de enlace entre el estado cuántico y su receptor. 
 
 Por ejemplo, Alice quiere enviar información cuántica para Bob. Supongamos que se trata del 
