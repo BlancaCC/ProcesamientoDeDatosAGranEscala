@@ -23,7 +23,7 @@ establece que
 forma que para todos los estados normalizados 
 $| \phi \rangle_A$ y 
 $| e \rangle_B$ en 
-$\mathcal H$ complan que*
+$\mathcal H$ cumplan que*
 
 
 $$
@@ -35,7 +35,7 @@ U
 | \phi \rangle_B
 $$
 
-Es decir, no podemos hacer una copia exacta de un estado cuántico desconocido, solo podremos copiar los estados clásico (no las superposiciones). 
+Es decir, no podemos hacer una copia exacta de un estado cuántico desconocido, solo podremos copiar los estados clásicos (no las superposiciones). 
 
 ## Un poco de contexto   
 
@@ -52,9 +52,9 @@ Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon en la nota
 
 ### Paso generales 
 
-1. Un estado de Bell es generado cuando se envía un quibit de A a B.   
+1. Un estado de Bell es generado cuando se envía un qubit de A a B.   
 
-2. Una medida de Bell del estado cuántico y de el cubit que se va a teletransportar ($| \phi \rangle$) es realizado en A y esto permite que uno de los cuatro estado que se van a medir puedan ser codificados en dos bits clásicos de información.   
+2. Una medida de Bell del estado cuántico y de el qubit que se va a teletransportar ($| \phi \rangle$) es realizado en A y esto permite que uno de los cuatro estado que se van a medir puedan ser codificados en dos bits clásicos de información.   
 
 3. Usando el canal tradicional los dos bits se mandan de A a B. 
 
@@ -62,7 +62,7 @@ Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon en la nota
 
 ## Formulación formal   
 
-Sea $| \psi \rangle$ el quibit de Alice que ella quiere enviar a Bob. 
+Sea $| \psi \rangle$ el qubit de Alice que quiere enviar a Bob. 
 
 El qubit puede escribirse como 
 
@@ -80,7 +80,7 @@ Donde el subíndice C se usa para distinguir este estado de A a B.
 
 #### Puerta CNOT 
 
-Alice aplicará una puerta CNOT a sus dos qubits. De esta manera uno de los qubit nos servierá como control mientras que el otro objetivo. 
+Alice aplicará una puerta CNOT a sus dos qubits. De esta manera uno de los qubit nos servirá como control mientras que el otro como objetivo. 
 
 Recordemos que aplicar una puerta CNOT se puede ver como aplicar un operador de estados, matriz 
 
