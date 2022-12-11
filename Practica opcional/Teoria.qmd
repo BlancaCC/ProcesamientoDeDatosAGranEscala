@@ -37,8 +37,13 @@ $$
 
 Es decir, no podemos hacer una copia exacta de un estado cuántico desconocido, solo podremos copiar los estados clásico (no las superposiciones). 
 
-## Un poco de contexto 
-Añadir quiénes fueron sus creadores y si se han hecho experimentos físicos al respecto.
+## Un poco de contexto   
+
+El primero de los artículos científicos al respecto fue
+*Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels* 
+publicado por  C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters en 1993. 
+
+Se realizó experimentalmente en 1997 por dos grupos de investigadores Sandu Popescu y Anton Zeilinger respectivamente.  
 
 ## Protocolo de Teleportación Cuántica 
 
@@ -71,7 +76,67 @@ $$
 $$
 Donde el subíndice C se usa para distinguir este estado de A a B. 
 
-El protocolo requiere ahora que Alice y Bob comparta un estado máximo entrelazado.  este será uno de estos cuatro (no importa cual)
+### Paso previos de Alice 
+
+#### Puerta CNOT 
+
+Alice aplicará una puerta CNOT a sus dos qubits. De esta manera uno de los qubit nos servierá como control mientras que el otro objetivo. 
+
+Recordemos que aplicar una puerta CNOT se puede ver como aplicar un operador de estados, matriz 
+
+$$
+CNOT
+= 
+\begin{bmatrix}
+1 &  0 &  0 &  0 \\
+0&   1 &  0 &  0   \\
+0 &  0 &  0 &  1   \\
+0 &  0&   1&   0  \\
+\end{bmatrix} 
+$$
+De esta manera 
+
+$$
+| \psi_1 \rangle 
+= 
+CNOT 
+| \psi_0 \rangle
+= 
+\frac{1}{2}
+(
+    \alpha 
+    | 0 \rangle
+    ( 
+        | 0 0 \rangle
+        +
+        | 11 \rangle
+    )
+    +
+    \beta 
+    | 1 \rangle
+    ( 
+        | 1 0 \rangle
+        +
+        | 0 1 \rangle
+    )
+).
+$$
+
+### Operador de Hadamard 
+
+A continuación alice aplicará el operador de Hadamard 
+
+$$
+H = 
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 &1 \\
+1 &-1  \\
+\end{bmatrix} 
+$$
+
+### Transmisión 
+El protocolo requiere ahora que Alice y Bob comparta un estado máximo entrelazado este será uno de estos cuatro (no importa cual)
 
 $$
 \begin{align}
@@ -118,13 +183,13 @@ $$
 $$
 
 Sin pérdida de generalidad supondremos que el estado compartido ha sido 
-$| \phi ^+ \rangle_{A B}$. 
+$| \phi ^+ \rangle_{A B}$, donde
+el subíndice A y B en el estado entrelazado indica si ese estado pertenece a la partícula de Alice o a Bod, recordemos que C era el estado que Alice pretendía teletransportar. 
 
-el subíndice A y B en el estado entrelazado si ese estado pertenece a la partícula de Alice o a Bod, recordemos que C era el estado que Alice pretendía teletransportar. 
 
-Alice toma una de las partículas del par, entonces Alice tiene dos, la C que es la que quieres teletransportar y la entrelazada A. Bob tiene una. 
+Alice toma una de las partículas del par, entonces Alice tiene dos, la C que es la que quieres teletransportar y ya las ha entrelazado en los dos pasos previos A. Bob tiene una. 
 
-Es estado total es el siguiente 
+El estado total es el siguiente: 
 
 $$
 | \psi \rangle_C
@@ -135,7 +200,8 @@ $$
     \alpha
     | 0 \rangle_C
     +
-    \beta 1 \rangle_C
+    \beta
+    | 1 \rangle_C
 )
 \otimes
 \frac{1}{\sqrt{2}}
@@ -241,12 +307,11 @@ $$
 | \psi \rangle_C
 \otimes
 | \phi^+ \rangle_{AB}
-&= 
+=  
 \frac{1}{2}
-\left(
-\\
-& 
-| \phi^+ \rangle_{CA}
+( 
+&
+|  \phi^+ \rangle_{CA}
 \otimes
 ( 
     \alpha | 0 \rangle_B 
@@ -254,8 +319,7 @@ $$
     \beta | 1 \rangle_B
 )
 \\
-+ 
-&
++ &
 | \phi^- \rangle_{CA}
 \otimes
 ( 
@@ -264,8 +328,7 @@ $$
     \beta | 1 \rangle_B
 )
 \\
-+ 
-&
++ &
 | \psi^+ \rangle_{CA}
 \otimes
 ( 
@@ -274,8 +337,7 @@ $$
     \beta | 0 \rangle_B
 )
 \\
-+ 
-&
++ &
 | \psi^- \rangle_{CA}
 \otimes
 ( 
@@ -284,7 +346,7 @@ $$
     \beta | 0 \rangle_B
 )
 \\
-&\right).
+).
 \end{align}
 $$
 
@@ -381,17 +443,72 @@ Como resultado de la medición de Alice, ella puede enviar el resultado de la me
 
 Y habiendo recibido tal información Bob realizará las siguiente operaciones a su partícula para transformarla en el estado deseado. 
 
-- Si Alice indica que su resultado es $\phi^+ \rangle_{CA}$
+- Si Alice indica que su resultado es $|\phi^+ \rangle_{CA}$
 entonces Bob sabe que su cubit está en el estado deseado. 
 
 - Si el mensaje indica que 
-$\phi^- \rangle_{CA}$
+$|\phi^- \rangle_{CA}$
 entonces deberá de transformarlo por la puerta cuántica. 
 
-TODO FALTA INDICAR LA MATRIZ DE LAS ÚLTIMAS TRES PUERTAS CUÁNTICAS. ESTO ESTÁ EN LA WIKIPEDIA. NO ME HA DADO TIEMPO, LO SIENTO. 
+$$
+\sigma_3 
+= 
+\begin{bmatrix}
+1 & 0 \\
+0 & -1 
+\end{bmatrix}
+$$
+para recuperar el estado. 
+
+-  Si el mensaje de Alice se corresponde a $| \psi^+ \rangle_{CA}$, Bob utilizará la puerta:
+
+$$
+\sigma_1 
+= 
+\begin{bmatrix}
+0 & 1 \\
+1 & 0 
+\end{bmatrix}
+$$
+a su qubit. 
+
+- Finalmente la puerta apropiada es 
+
+$$
+\sigma_3 \sigma_1
+= 
+- \sigma_1 \sigma_3 
+= 
+i \sigma_2
+= 
+\begin{bmatrix}
+0 & 1 \\
+-1 & 0 
+\end{bmatrix}.
+$$
+
+
+Después de esta operación, el quibit de Bob estará en el estado 
+
+$$
+| \psi \rangle_B
+= 
+\alpha | 0 \rangle_B
++
+\beta | 1 \rangle_B.
+$$
+Notemos que la teleportación no consiste en copiar los quibits y por tanto es consistente con el teorema de la no clonación. 
+
+Esto se puede generalizar, por cada qubit teletransportado Alice necesita enviar a Bob dos bits de información clásicos. 
+
 # Fuentes 
-- Página 26 del libro TODO IKER AÑADE EL LIBRO QUE NO SÉ CUÁL ES
+- Página 26 del libro Quantum Computation and Quantum Information
+10th Anniversary Edition
+Michael A. Nielsen & Isaac L. Chuang
+
 - https://es.wikipedia.org/wiki/Teorema_de_no_clonación
 
 -  https://qiskit.org/textbook/ch-algorithms/teleportation.html#3.1-How-Will-We-Test-the-Protocol-on-a-Quantum-Computer?-
 - https://en.wikipedia.org/wiki/Quantum_teleportation
+- Bennett, Charles H.; Brassard, Gilles; Crépeau, Claude; Jozsa, Richard; Peres, Asher; Wootters, William K. (29 March 1993). "Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels". Physical Review Letters. 70 (13): 1895–1899. Bibcode:1993PhRvL..70.1895B.
+- D. Boschi; S. Branca; F. De Martini; L. Hardy; S. Popescu (1998). "Experimental Realization of Teleporting an Unknown Pure Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels". Physical Review Letters. 80 (6): 1121–1125. arXiv:quant-ph/9710013. Bibcode:1998PhRvL..80.1121B.
