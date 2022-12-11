@@ -50,11 +50,34 @@ Se realizó experimentalmente en 1997 por dos grupos de investigadores Sandu Pop
 ### Requisitos previos 
 Para transferir un qubit, Alice y Bob usaran un tercer canal (Telamon en la notación de IBM) para enviar un par de qubit entrelazados. 
 
+Además, para la correcta comprensión del algoritmo, se requerirá el uso de los estados de Bell. 
+En primer lugar, una puerta de Hadamard nos permite pasar del estado $|00\rangle$ a $\frac{(|0\rangle+|1\rangle)|0\rangle}{\sqrt{2}}$. Y si aplicamos a continuación un CNOT, obtendremos el estado $\frac{(|00\rangle+|11\rangle)}{\sqrt{2}}$. Esta transformación de estados resultante, es la que denominaremos como estado de Bell, y lo denotaremos como $|\beta_{00}\rangle$. De este modo, los estados posibles son:
+$$
+|\beta_{00}\rangle := \frac{(|00\rangle+|11\rangle)}{\sqrt{2}}
+$$
+$$
+|\beta_{01}\rangle := \frac{(|01\rangle+|10\rangle)}{\sqrt{2}}
+$$
+$$
+|\beta_{10}\rangle := \frac{(|00\rangle-|11\rangle)}{\sqrt{2}}
+$$
+$$
+|\beta_{11}\rangle := \frac{(|01\rangle-|10\rangle)}{\sqrt{2}}
+$$
+
+Desde un punto de vista general los estados de Bell los podemos resumir en la siguiente definición:
+
+$$
+|\beta_{xy}\rangle = \frac{|0,y\rangle + (-1)^x|1,\overline{y}\rangle}{\sqrt{2}}
+$$
+
+donde $\overline{y}$ es la negación de $y$.
+
 ### Paso generales 
 
 1. Un estado de Bell es generado cuando se envía un qubit de A a B.   
 
-2. Una medida de Bell del estado cuántico y de el qubit que se va a teletransportar ($| \phi \rangle$) es realizado en A y esto permite que uno de los cuatro estado que se van a medir puedan ser codificados en dos bits clásicos de información.   
+2. Una medida de Bell del estado cuántico y de el qubit que se va a teletransportar ($| \phi \rangle$) es realizado en A y esto permite que uno de los cuatro estados que se van a medir puedan ser codificados en dos bits clásicos de información.   
 
 3. Usando el canal tradicional los dos bits se mandan de A a B. 
 
@@ -124,7 +147,7 @@ $$
 
 ### Operador de Hadamard 
 
-A continuación alice aplicará el operador de Hadamard 
+A continuación Alice aplicará el operador de Hadamard 
 
 $$
 H = 
@@ -136,7 +159,7 @@ H =
 $$
 
 ### Transmisión 
-El protocolo requiere ahora que Alice y Bob comparta un estado máximo entrelazado este será uno de estos cuatro (no importa cual)
+El protocolo requiere ahora que Alice y Bob compartan un estado máximo entrelazado. Este será uno de estos cuatro (no importa cual)
 
 $$
 \begin{align}
@@ -184,10 +207,10 @@ $$
 
 Sin pérdida de generalidad supondremos que el estado compartido ha sido 
 $| \phi ^+ \rangle_{A B}$, donde
-el subíndice A y B en el estado entrelazado indica si ese estado pertenece a la partícula de Alice o a Bod, recordemos que C era el estado que Alice pretendía teletransportar. 
+el subíndice A y B en el estado entrelazado indica si ese estado pertenece a la partícula de Alice o a la de Bob. Recordemos que C era el estado que Alice pretendía teletransportar. 
 
 
-Alice toma una de las partículas del par, entonces Alice tiene dos, la C que es la que quieres teletransportar y ya las ha entrelazado en los dos pasos previos A. Bob tiene una. 
+Alice toma una de las partículas del par, entonces tiene dos, la C que es la que quiere teletransportar y ya las ha entrelazado en los dos pasos previos A. Bob tiene una. 
 
 El estado total es el siguiente: 
 
@@ -211,9 +234,7 @@ $$
     |1 \rangle_A \otimes |1 \rangle_B
 ).
 $$
-Alice hace una medición local en los cuatro estados en las dos partículas en su posesión. 
-
-Que procedemos a escribir para que quede claro: 
+Alice hace una medición local en los cuatro estados en las dos partículas en su posesión, que procedemos a escribir para que quede claro: 
 
 $$
 \begin{align}
@@ -353,7 +374,7 @@ $$
 Notemos qe las partículas siguen igual ya que no hemos 
 aplicado ninguna transformación a las operaciones. 
 
-La teletrasportación ocurre cuando alice mide uno de sus qubits A y V en la base de Bell.
+La teletrasportación ocurre cuando Alice mide uno de sus qubits A y C en la base de Bell.
 
 
 $$
@@ -441,7 +462,7 @@ que se le parece al estado que va a ser teletrasportado.
 
 Como resultado de la medición de Alice, ella puede enviar el resultado de la medición a Bob por el canal de transmisión tradicional. 
 
-Y habiendo recibido tal información Bob realizará las siguiente operaciones a su partícula para transformarla en el estado deseado. 
+De esta forma, habiendo recibido tal información, Bob realizará las siguiente operaciones a su partícula para transformarla en el estado deseado. 
 
 - Si Alice indica que su resultado es $|\phi^+ \rangle_{CA}$
 entonces Bob sabe que su cubit está en el estado deseado. 
@@ -497,7 +518,7 @@ $$
 +
 \beta | 1 \rangle_B.
 $$
-Notemos que la teleportación no consiste en copiar los quibits y por tanto es consistente con el teorema de la no clonación. 
+Notemos que la teleportación no consiste en copiar los qubits y por tanto es consistente con el teorema de la no clonación. 
 
 Esto se puede generalizar, por cada qubit teletransportado Alice necesita enviar a Bob dos bits de información clásicos. 
 
